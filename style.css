@@ -1,0 +1,280 @@
+:root {
+    /* Theme colors */
+  --color-primary: hsl(0, 50%, 10%);     /* background geral */
+  --color-secondary: hsl(0, 50%, 90%);   /* texto */
+  --color-tertiary: hsl(60, 80%, 80%);   /* detalhe opcional */
+  --color-accent: hsl(300, 80%, 80%);    /* botões / destaque */
+  --color-card: hsl(0, 50%, 15%);        /* CARD (ligeiramente mais claro que o fundo) */
+}
+
+/* Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page base */
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-primary); 
+}
+
+/* Card layout */
+.card {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 1.5rem;
+    background-color: var(--color-card);
+    border-radius: 12px;
+    padding: 1.25rem;
+    width: 100%;
+    transition: transform 180ms ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.card-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Artist image */
+.image-container {
+    padding-top: 56px;
+    width: clamp(240px, 50vw + 1rem, 720px);
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.card-subsection {
+    border-radius: 5%;
+    padding: 4px;
+}
+
+.card-image{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block;
+}
+
+.card-image:hover{
+    transform: scale(1.02);
+}
+
+.card-content {
+    display: grid;
+}
+
+/* Song list */
+.list-img{
+    width: clamp(28px, 10vw + 1rem, 56px);
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.6s cubic-bezier(0.24, 1, 0.12, 1);
+    flex-shrink: 0;
+    padding: 4px;
+}
+
+.list-txt{
+    padding-left: 12px;
+}
+
+.list-img:hover{
+    transform: scale(1.04);
+}
+
+.card-list-section{
+    display: grid;
+    gap:  clamp(12px, 1.2vw, 24px);
+    padding-bottom: 16px;
+    padding-top: 32px;
+    max-width: 320px;
+    max-height: 240px;
+}
+
+.card-list-section h1 {
+    color: var(--color-secondary);
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;    
+}
+
+.list-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    padding: 4px;
+    border-radius: 24px;
+    transition: transform 0.8s cubic-bezier(0.12, 1, 0.8, 1);
+    width: 100%;
+    margin: 0 auto;
+}
+
+.list-item p {
+    color: var(--color-secondary);
+}
+
+/* Link wrappers used inside list/image */
+.list-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-link {
+    display: block;
+    width: 100%;
+}
+
+/* Hover interactions */
+
+.list-item:hover{
+    transform: scale(1.02)
+}
+
+/* Text blocks */
+.page-wrapper {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding-inline: 1rem;
+  perspective: 1200px
+}
+
+.artist-name{
+    color: var(--color-secondary);
+    padding-bottom: 12px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-color: var(--color-tertiary);
+    text-decoration-thickness: 2px;
+    transition: transform 0.4s cubic-bezier(0.8, 1, 0.12, 1);
+}
+
+.artist-name:hover{
+    transform: scale(1.01);
+}
+
+.artist-resume{
+    color: var(--color-secondary);
+    font-weight: 800;
+    padding-bottom: 8px;
+}
+
+.artist-topics{
+    color: var(--color-secondary);
+    font-size: smaller;
+}
+
+/* Responsive: tablet and down */
+@media (max-width: 768px) {
+    .card{
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+        padding: 0.9rem;        
+    }
+
+    .card-right{
+        order: -1;
+    }
+
+    .image-container {
+        padding-top: 0;
+        width: min(100%, 420px);
+        aspect-ratio: 4/3;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-list-section {
+        max-width: 100%;
+        max-height: none;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        gap: 10px;
+    }
+
+    .list {
+        gap: 8px;
+    }
+}
+
+/* Responsive: small phones */
+@media (max-width: 480px) {
+    .image-container{
+        width: min(100%, 420px);
+        aspect-ratio: 16/10;
+    }
+
+    .card {
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+}
+
+/* Carousel scene */
+.stage {
+    width: 100%;
+    height: 100vh;
+    padding: 32px;
+    overflow-x: hidden;    
+    border-radius: 16px;
+}
+
+.carousel-viewport {
+    perspective: 1400px; 
+    overflow: hidden;
+    width: min(100%, 1280px);
+    height: 100%;
+    touch-action: pan-y pinch-zoom;
+}
+
+.carousel-track {
+    position: relative;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+/* Carousel items */
+.card-shell {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 420ms ease;
+    pointer-events: none;
+}
+
+.card-shell.is-active {
+    pointer-events: auto;
+}
