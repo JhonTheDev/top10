@@ -1,3 +1,24 @@
+//Images import
+const ASSET_BASE = "https://cdn.jsdelivr.net/gh/JhonTheDev/top10@main/";
+
+function toAssetUrl(path) {
+return ASSET_BASE + encodeURI(path);
+}
+
+function hydrateImageSources() {
+const images = document.querySelectorAll("img[src]");
+
+images.forEach((img) => {
+const src = img.getAttribute("src");
+if (!src) return;
+
+});
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+hydrateImageSources();
+});
+
 // Card tilt effect
 const cards = document.querySelectorAll('.card');
 const max_rot = 2;
